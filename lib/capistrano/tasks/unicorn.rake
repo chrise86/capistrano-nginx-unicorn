@@ -9,7 +9,7 @@ namespace :unicorn do
       template "unicorn_init.erb", "/tmp/unicorn_init"
       execute :chmod, "+x", "/tmp/unicorn_init"
       sudo :mv, "/tmp/unicorn_init /etc/init.d/#{fetch(:unicorn_service_name)}"
-      sudo "update-rc.d -f #{fetch(:unicorn_service_name)} defaults"
+      sudo "chkconfig #{fetch(:unicorn_service_name)} on"
     end
   end
 
